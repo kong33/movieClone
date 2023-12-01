@@ -1,5 +1,4 @@
 
-// Movie.js
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -10,7 +9,7 @@ import {
   Text,
 } from './Movie.style';
 
-export const Movie = ({ data }) => {
+export const TV = ({ data }) => {
   const PosterUrl = `https://image.tmdb.org/t/p/w1280/${data.poster_path}`;
   const [isHovered, setHovered] = useState(false);
 
@@ -24,15 +23,15 @@ export const Movie = ({ data }) => {
 
   return (
     <MovieContainer>
-      <PosterImage src={PosterUrl} alt={data.title} />
+      <PosterImage src={PosterUrl} alt={data.name} />
 
       <HideBanner ishovered={isHovered} onMouseEnter={handleMouseHover} onMouseLeave={handleMouseLeave}>
-        <Text>{data.title}</Text>
+        <Text>{data.name}</Text>
         <Text>{data.overview}</Text>
       </HideBanner>
 
       <BannerSection>
-        <Text>{data.title}</Text>
+        <Text>{data.name}</Text>
         <Text>{data.vote_average}</Text>
       </BannerSection>
     </MovieContainer>
@@ -40,9 +39,9 @@ export const Movie = ({ data }) => {
 }
 
 
-Movie.propTypes = {
+TV.propTypes = {
   data: PropTypes.shape({
-    title: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     poster_path: PropTypes.string.isRequired,
     overview: PropTypes.string.isRequired,
     vote_average: PropTypes.number.isRequired,
